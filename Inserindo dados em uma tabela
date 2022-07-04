@@ -1,0 +1,15 @@
+#INSERINDO DADOS NO PYTHON - Tabela colaborador
+
+import mysql.connector
+
+cnx = mysql.connector.connect(user='root', password='1234', host='localhost',database='rentcar1')
+
+cursor = cnx.cursor()
+def InserirDados():
+input_nome = input('Digite o nome do colaborador: ')
+input_cargo = input('Digite o cargo do colaborador: ')
+comando_sql = "INSERT INTO colaborador(nome,cargo) VALUES(%s,%s)"
+valores = (input_nome,input_cargo)
+cursor.execute(comando_sql,valores)
+
+cnx.commit()
